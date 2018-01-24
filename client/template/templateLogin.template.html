@@ -1,0 +1,18 @@
+<template name="templateLogin">
+  {{> templateHeader}}
+  <div class="container">
+    <div class="row" style="text-align: center;">
+      <div style="text-algin:center;background:whitesmoke" class="col-lg-6 col-lg-offset-3 col-xs-12">
+        <h1 style="padding-top: 20px;">Prijavite se</h1>  
+        <div class="form">
+          <form class="login-form">
+            <input class="form-control" id="login-email" type="text" placeholder="Unesite Vaš email"/><br>
+            <input id="login-password"  class="form-control"  type="password" placeholder="šifra"/><br>
+            <button type="submit"  class="btn btn-success btn-lg" >Prijavi se</button>
+            <p style="padding-top: 20px;" class="message">Nisi registrovan? <a href="/registracija">Registruj se</a></p>
+          </form>
+        </div>  
+      </div>   
+    </div>    
+  </div>          
+</template>
