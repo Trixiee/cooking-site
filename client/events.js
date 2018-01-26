@@ -50,7 +50,6 @@ Template.templateRegister.events({
 		let username = $('#register-username').val()
 		let password = $('#register-password').val()
 		let email = $('#register-email').val()
-		//ispravi jednom ovo da zaista funkcionise ne samo kao reg
 		let testemail = isEmail(email) 
 		if(testemail){
 			Accounts.createUser({
@@ -174,7 +173,7 @@ Template.templateAddRecepties.events({
 
 	'click #add-new-ingredient ':(event)=>{
 		event.preventDefault()
-		$(".add-new-ingredient").append('<div class="jedan-div"><div class="form-group"> <span class="col-md-2 col-md-offset-1 text-center">Količina</span><div class="col-md-8"><input name="kolicina" class="form-control"  type="text" placeholder="Unesite količinu" /> </div></div><div class="form-group"><span class="col-md-2 col-md-offset-1 text-center">Sastojak</span><div class="col-md-8"><input name="sastojak"  class="form-control"  type="text" placeholder="Unesite naziv sastojka" /></div></div></div>')
+		$(".add-new-ingredient").append('<div class="one-ingredient"><div class="form-group"> <span class="col-md-2 col-md-offset-1 text-center">Količina</span><div class="col-md-8"><input name="kolicina" class="form-control"  type="text" placeholder="Unesite količinu" /> </div></div><div class="form-group"><span class="col-md-2 col-md-offset-1 text-center">Sastojak</span><div class="col-md-8"><input name="sastojak"  class="form-control"  type="text" placeholder="Unesite naziv sastojka" /></div></div></div>')
 	},
 
 
@@ -205,7 +204,7 @@ Template.templateAddRecepties.events({
 		}
 		let picture =templateInstance.recipes_picture.get()		
 		let ingredients = [];
-		 $('.jedan-div').each((i,k) => {
+		 $('.one-ingredient').each((i,k) => {
 		 	let a = {}
 		 	$(k).find("input").each((i,k) => a[$(k).attr('name')] = $(k).val())
 		 	ingredients.push(a)
@@ -264,7 +263,7 @@ Template.templateshowAdvanced.events({
 				alert("Mora proći 2 minute pre nego što će Vam opet biti omogućeno da dodate komentar")
 				$("#add-comment-input").hide();
 				$("#add-comment-button").hide();
-				setTimeout(allowcommentagain, 60000);
+				setTimeout(allowcommentagain, 2*60000);
 			}
 		}
 	},
@@ -317,4 +316,3 @@ Template.templateshowAdvanced.events({
 })
 
 
-//$('.jedan-div').each((i,k) => console.log($(k).find("input").each((i,k)=>console.log($(k).val()))))
