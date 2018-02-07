@@ -30,17 +30,17 @@ Router.route("/prijava", {
 Router.route("/dodajte_recept", {
 	name: "dodajte_recept",
 	action: function(){
-		this.render("templateAddRecepties")
+		this.render("templateAddRecipes")
 	}
 })
 
 
-Router.route("/izmenite_recept", {
+/*Router.route("/izmenite_recept", {
 	name: "izmenite_recept",
 	action: function(){
-		this.render("templatechangeReceptie")
+		this.render("templatechangeRecipes")
 	}
-})
+})*/
 
 Router.route("/recept/:id", {
 	name: "recept",

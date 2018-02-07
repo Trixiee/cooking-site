@@ -24,17 +24,37 @@ Template.templateshowAdvanced.helpers({
     	return Meteor.users.findOne({
     		_id: Template.instance().data.userId
     	})
-    },
+  },
+
+  recipes_likes:() => {
+      let recipe = Recipes.findOne({
+        _id:Template.instance().data._id
+      })
+      return recipe.likes.length
+  },
+
+
+  recipes_likes_greater_than_zero:() => {
+      let recipe = Recipes.findOne({
+        _id:Template.instance().data._id
+      })
+      return recipe.likes.length>0
+  },
+
+
+
   comments:()=>{
     	return Comment.find({
         postid:Template.instance().data._id
       })
   },
+
   comment_publisher:function(){
       return Meteor.users.findOne({
         _id: this.userId
     })
   },
+
   is_post_publisher:function(){
     let ok = false
       if(Meteor.userId() == Template.instance().data.userId){
@@ -42,6 +62,7 @@ Template.templateshowAdvanced.helpers({
       }
     return ok;
   },
+
   is_comment_publisher:function(){
     let ok = false
       if(Meteor.userId() == this.userId){

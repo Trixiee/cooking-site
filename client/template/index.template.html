@@ -1,35 +1,33 @@
 <template name="index">
     {{> templateHeader}}
-    <section id="recepties">
+    <div id="recipes">
         <div class="container wow fadeInUp">
           <div class="section-header">
-            <legend class="text-center header basic-info">Recepti</legend>
-              
+            <legend class="text-center header ">Recepti</legend>    
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <ul id="recepties-flters">
-
+              <ul id="recipes-flters">
                 <li class="filter-active"><input id="search-input" class="search" type="text" placeholder="Pretraži recepte..."><i class="fa fa-search" aria-hidden="true"></i>
                 </li>
-
               </ul>
             </div>
           </div>
         
-          {{#each search_allRecepies}}
-            <div class="gallery-wrapper">
-            <div  class="col-lg-3 col-md-6">
-              <div class="member">
-                <a href="/recept/{{_id}}"><div class="pic"><img src="{{picture}}" alt=""></div></a>
-                <h4>{{name}}</h4>
-                <span>Vreme pripreme {{time}} minuta</span>
+           {{#each search_allRecepies}}
+              <div style="margin-bottom" class="col-lg-3 col-md-6 gallery">
+                    <a href="/recept/{{_id}}">
+                      <div class="pic">
+                        <img style="max-width: 100%;max-height: 170px;" src="{{picture}}" alt="">
+                      </div>
+                    </a>
+                    <h4 class="recipes-gallery-name">{{name}}</h4>
+                    <span>Vreme pripreme {{time}} minuta</span>
               </div>
-            </div>
-            </div>
             {{/each}}
+          </div>
         </div>
-
-      </section>
-      <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    </template>
+      <div>
+  </div>
+  <button class="up-button" ><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+</template>

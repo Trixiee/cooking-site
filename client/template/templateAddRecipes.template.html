@@ -1,4 +1,5 @@
-<template name="templatechangeReceptie">
+<template name="templateAddRecipes">
+  {{#if currentUser}}
   {{> templateHeader}}
   <div class="container">
     <div class="row">
@@ -42,7 +43,7 @@
           <div class="form-group">
             <span class="col-md-2 col-md-offset-1 text-center">Vreme pripreme</span>
             <div class="col-md-8">
-              <input class="form-control" id="time" type="number" placeholder="Unesite vreme pripreme u minutima" required="true"/>
+              <input class="form-control" id="time" type="number" placeholder="Unesite sveukupno vreme pripreme u minutima" required="true"/>
             </div>
           </div>
           <div class="form-group">
@@ -59,24 +60,25 @@
             </div>
           </div>
           <div class="form-group">
-            <span class="col-md-2 col-md-offset-1 text-center">Dodajte sliku</span>
+            <span class="col-md-2 col-md-offset-1 text-center">Izaberite sliku</span>
             <div class="col-md-8">
               <form id="picture-form">
-                <input class="form-control" id="file-upload" type="file"/>
-              </form> 
-            </div>
-          </div>
+                <label for="file-upload" class="custom-file-upload">
+                 Dodajte sliku
+               </label>
+               <input id="file-upload" style="display:none" type="file"/>
+             </form>
+           </div>
+         </div>
 
-          <legend class="text-center header">Dodajte sastojke</legend>
+         <legend class="text-center header">Dodajte sastojke</legend>
 
-
-
-          <div class="jedan-div">
+         <div class="one-ingredient">
 
            <div class="form-group">
             <span class="col-md-2 col-md-offset-1 text-center">Kolicina</span>
             <div class="col-md-8">
-              <input  class="form-control" name="kolicina" type="text" placeholder="Unesite količinu" />
+              <input  class="form-control" name="kolicina" type="text" placeholder="Unesite količinu" required="true" />
             </div>
           </div>
 
@@ -103,6 +105,7 @@
             <textarea class="form-control" id="preparation" name="message" placeholder="Unesite način pripreme" rows="7"></textarea>
           </div>
         </div>
+
         <div class="form-group">
           <span class="col-md-2 col-md-offset-1 text-center">Savet</span>
           <div class="col-md-8">
@@ -112,16 +115,25 @@
 
         <div class="form-group">
           <div class="col-md-12 text-center">
-          <button type="submit"  class="btn btn-success btn-lg" id="change-recipes">Izmenite recept</button>
+            <button type="submit"  class="btn btn-success btn-lg" id="send-recipes">Pošalji recept</button>
           </div>
-        </div>
-
+        </div>   
       </fieldset>
-    </form>
+     </form>
+    </div>
   </div>
 </div>
+
+
 </div>
+{{/if}}
+
+<div>
+    <button class="up-button" ><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 </div>
+
 </template>
+
+
 
 

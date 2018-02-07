@@ -1,8 +1,7 @@
 Meteor.methods({
 	addRecipes:(name, time, category, difficulty, number, wayoflife, picture, ingredients, preparation, advice) =>{
-		return Recipes.insert({name:name, time:time, category:category, difficulty:difficulty, number:number, wayoflife:wayoflife, picture:picture, ingredients:ingredients, preparation:preparation, advice:advice,createdAt:new Date(),  userId:Meteor.userId()})
+		return Recipes.insert({name:name, time:time, category:category, difficulty:difficulty, number:number, wayoflife:wayoflife, picture:picture, ingredients:ingredients, preparation:preparation, advice:advice,  createdAt:new Date(),  userId:Meteor.userId()})
 	},
-
 	deleteRecipes:(postid)=>{
 		let post = Recipes.findOne({
 			_id:postid
@@ -11,6 +10,26 @@ Meteor.methods({
 			return Recipes.remove(postid);
 
 	},
+
+	'addLike':(postid) => {
+		Recipes.update({
+			_id:postid
+		},{
+			$push:{
+				'likes':Meteor.userId()
+			}
+		})
+	},
+	'removeLike':(postid) => {
+		Recipes.update({
+			_id:postid
+		},{
+			$pop:{
+				'likes':Meteor.userId()
+			}
+		})
+	},
+
 
 	addComment:(comment,postid)=>{
 		return Comment.insert({comment:comment, postid:postid, createdAt:new Date(), userId:Meteor.userId()})
