@@ -1,41 +1,44 @@
 <template name="templateshowAdvanced">
   {{> templateHeader}}
-  
-  <div class="container showadvanced">
+
+  <div class="container ">
     <div class="row">
       <div class="col-md-12">
-        <legend class="text-center header">
-          {{name}}
-          <div style="float: right;">
+      <div style="margin-top: 10px;">
+        
             <div id="recipes-likes">
-              {{#if   recipes_likes_greater_than_zero}}
-              Broj sviđanja {{recipes_likes}} 
+              {{#if  recipes_likes_greater_than_zero}}
+                  Broj sviđanja  {{recipes_likes}} 
               {{/if}}
             </div>
+            
             {{#if currentUser}}
-            <i style="color:blue" class="fa fa-thumbs-up"></i>
+                <i style="color:blue;" class="fa fa-thumbs-up"></i>
             {{/if}}
+            
             {{#if is_post_publisher}}
-            <i id="trash" title="Obrisite recept" class="fa fa-trash-o delete-post" aria-hidden="true"></i>
-            <!--<i id="pencil" title="Izmenite recept" class="fa fa-pencil-square-o update-post " aria-hidden="true"></i>-->
+                <i id="trash" title="Obrisite recept" class="fa fa-trash-o delete-post" aria-hidden="true"></i>
+                <!--<i id="pencil" title="Izmenite recept" class="fa fa-pencil-square-o update-post " aria-hidden="true"></i>-->
             {{/if}}
-          </div>
-        </legend>
+          </div><br>
+        
+           <legend class="text-center header col-lg-12">
+              {{name}}
+           </legend>
 
-        <span class="col-lg-6  col-xs-12">
-          <img id="recipes-picture" src="{{picture}}">
-        </span>
-
+          <div class="col-lg-6  col-xs-12">
+             <img id="recipes-picture" src="{{picture}}">
+          </div> 
         <div class="col-lg-6 col-xs-12">
           <legend class="text-center header basic-info">Osnovne informacije</legend>
           <ul id="basic-information">
-            <li class="autor">Autor :{{user.profile.name}}</li>  
-            <li>Kategorija :{{category}}</li>  
-            <li>Težina pripreme :{{difficulty}}</li> 
-            <li>Vreme pripreme : {{time}} <span>minuta</span></li> 
-            {{#unless number=""}} 
-            <li>Broj porcija :{{number}}</li>
-            {{/unless}}
+            <li class="autor">Autor: {{user.profile.name}}</li>  
+            <li>Kategorija: {{category}}</li>  
+            <li>Težina pripreme: {{difficulty}}</li> 
+            <li>Vreme pripreme: {{time}} minuta</li> 
+            {{#if is_not_empty_number}} 
+               <li>Broj porcija: {{number}}</li>
+            {{/if}}
           </ul>
         </div>
 
@@ -61,17 +64,18 @@
 
         <div>
           <legend class="text-center header col-lg-12">Priprema</legend>
-          <span class="col-md-2 col-md-offset-1 text-center">Način pripreme</span>
-          <div id="preparation" class="col-md-8">
+          <div class="col-lg-12">Način pripreme</div>
+          <div style="margin-top: 5px" id="preparation" class="col-lg-12">
             {{{preparation}}}
           </div>
 
-          {{#unless filteradvice=""}}
-          <span class="col-md-2 col-md-offset-1 text-center">Savet</span>
-          <div  class="col-md-8">
+          {{#if is_not_empty_advice}}
+          <div style="padding-top:20px" class="col-lg-12">Savet</div>
+          <div  style="margin-top:5px" class="col-lg-12">
             {{{advice}}}
           </div>
-          {{/unless}}   
+
+          {{/if}} 
 
         </div> 
 
@@ -79,7 +83,7 @@
           <legend class="text-center header col-lg-12">Komentari</legend>
           {{#if currentUser}}
           <span class="col-md-8 col-xs-12 col-md-offset-1 text-center">
-            <input style="width: 100%;margin-bottom: 20px;" class="form-control" id="add-comment-input" type="text" placeholder="Unesite komentar" required="true"/>
+            <input style="width: 100%; margin-bottom: 20px;" class="form-control" id="add-comment-input" type="text" placeholder="Unesite komentar" required="true"/>
           </span>
 
           <div class="col-md-2 col-xs-12">

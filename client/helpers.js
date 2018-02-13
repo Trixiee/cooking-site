@@ -69,6 +69,29 @@ Template.templateshowAdvanced.helpers({
         return  true
       }
     return ok;
+  },
+
+  is_not_empty_advice:function(){
+      let recipe = Recipes.findOne({
+        _id:Template.instance().data._id
+      })
+
+      if(recipe.advice!=""){
+        return true;
+      }else{
+        return false;
+      }
+  },
+  is_not_empty_number:function(){
+     let recipe = Recipes.findOne({
+        _id:Template.instance().data._id
+      })
+
+      if(recipe.number!=""){
+        return true;
+      }else{
+        return false;
+      }
   }
 })
 
