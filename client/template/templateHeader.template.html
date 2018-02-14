@@ -10,45 +10,38 @@
         <a class="navbar-brand" href="/">Šta kuvati?</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-        </ul>
-
-
         <ul class="nav navbar-nav navbar-right">
-          {{#if currentUser}}
+            {{#if currentUser}}
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{currentUser.profile.name}} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                 <li id="change-profile-name"><a href="#">Izmena korisničkog imena</a></li>
+                  <li id="change-profile-password"><a href="#">Izmena šifre</a></li>
+                </ul>
+              </li>
+          {{/if}}
+
+          <li ><a href="/">Početna</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{currentUser.profile.name}} <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-             <li id="change-profile-name"><a href="#">Izmena korisničkog imena</a></li>
-             <li id="change-profile-password"><a href="#">Izmena šifre</a></li>
-           </ul>
-         </li>
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kategorije <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+               {{#each search_allCategory}}
+                  <li><a href="/{{name}}">{{name}}</a></li>
+                {{/each}}
+              </ul>
+          </li>
+        
+          {{#if currentUser}}
+            <li><a href="/dodajte_recept">Dodaj recept</a></li>
+            <li><a id="log-out" href="#">Odjavi se</a></li>
+          {{else}}
+            <li><a href="/prijava"><span class="glyphicon glyphicon-user"></span> Prijavite se</a></li>
+            <li><a href="/registracija"><span class="glyphicon glyphicon-log-in"></span> Registrujte se</a></li>
          {{/if}}
-         <li ><a href="/"></a></li>
-
-         <li ><a href="/">Početna</a></li>
-         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kategorije <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-
-            {{#each search_allCategory}}
-            <li><a href="/{{name}}">{{name}}</a></li>
-            {{/each}}
-
-          </ul>
-        </li>
-        {{#if currentUser}}
-        <li><a href="/dodajte_recept">Dodaj recept</a></li>
-        <li><a id="log-out" href="#">Odjavi se</a></li>
-        {{else}}
-        <li><a href="/prijava"><span class="glyphicon glyphicon-user"></span> Prijavite se</a></li>
-        <li><a href="/registracija"><span class="glyphicon glyphicon-log-in"></span> Registrujte se</a></li>
-        {{/if}}
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
-
-</nav>
+  </nav>
 
 <div id="username-modal"  class="modal">
   <div class="modal-content"  >
@@ -69,7 +62,6 @@
 
 
 
-
 <div id="password-modal" class="modal">
   <div class="modal-content" >
     <div class="modal-header">
@@ -77,24 +69,25 @@
       <h1>Promenite  šifru</h1>
     </div>
     <div class="modal-body" style="text-align: center;" >
-      <form id="new-password-form">
-       <div class="input-group">
-        <span title="Prikazite šifru" class="input-group-addon"><i id="old" class="fa fa-eye password" aria-hidden="true"></i></span>
-        <input  id="old-password" class="form-control"  type="password" placeholder="Unesite staru šifru">
-       </div><br>
+        <form id="new-password-form">
+          <div class="input-group">
+            <span title="Prikazite šifru" class="input-group-addon"><i id="old" class="fa fa-eye password" aria-hidden="true"></i></span>
+            <input  id="old-password" class="form-control"  type="password" placeholder="Unesite staru šifru">
+    </div><br>
 
-       <div class="input-group">
+    <div class="input-group">
         <span  title="Prikazite šifru" class="input-group-addon"><i id="new" class="fa fa-eye password" aria-hidden="true"></i></span>
         <input id="new-password" class="form-control " type="password" placeholder="Unesite novu šifru">
-       </div><br>
+    </div><br>
 
-       <div class="input-group">
-        <span title="Prikazite šifru" class="input-group-addon"><i id="confirm" class="fa fa-eye password" aria-hidden="true"></i></span>
-        <input id="confirm-password" class="form-control" type="password" placeholder="Potvrdite novu šifru">
-      </div>
+    <div class="input-group">
+      <span title="Prikazite šifru" class="input-group-addon"><i id="confirm" class="fa fa-eye password" aria-hidden="true"></i></span>
+      <input id="confirm-password" class="form-control" type="password" placeholder="Potvrdite novu šifru">
+    </div>
       
     </form> 
   </div>
+  
   <div class="modal-footer" style="text-align: center;" >
    <button style="float: right;" class="confirm-close" id="confirm-profile-password-change" type="submit">Potvrdite izmenu šifre
    </button>

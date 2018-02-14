@@ -183,7 +183,7 @@ Template.templateAddRecipes.events({
 
 	'click #add-new-ingredient ':(event)=>{
 		event.preventDefault()
-		$(".add-new-ingredient").append('<div class="one-ingredient"><div class="form-group"> <span class="col-md-2 col-md-offset-1 text-center">Količina</span><div class="col-md-8"><input name="kolicina" class="form-control"  type="text" placeholder="Unesite količinu" /> </div></div><div class="form-group"><span class="col-md-2 col-md-offset-1 text-center">Sastojak</span><div class="col-md-8"><input name="sastojak"  class="form-control"  type="text" placeholder="Unesite naziv sastojka" /></div></div></div>')
+		$(".add-new-ingredient").append('<div class="one-ingredient"><div class="form-group"> <div class="col-md-2 col-md-offset-1 name-of-input">Količina</div><div class="col-md-8"><input name="kolicina" class="form-control"  type="text" placeholder="Unesite količinu" /> </div></div><div class="form-group"><div class="col-md-2 col-md-offset-1 name-of-input">Sastojak</div><div class="col-md-8"><input name="sastojak"  class="form-control"  type="text" placeholder="Unesite naziv sastojka" /></div></div></div>')
 	},
 
 
@@ -223,9 +223,8 @@ Template.templateAddRecipes.events({
 		})
 
 		let preparation =$("#preparation").val()
-		let filterpreparation = preparation.replace( new RegExp( "\n", "g" ),"<br>");
 		let advice = $("#advice").val()
-		let filteradvice = advice.replace( new RegExp( "\n", "g" ),"<br>");
+		//let filteradvice = advice.replace( new RegExp( "\n", "g" ),"<br>");
 
 		if(picture==""){
 			alert("Molim Vas sačekajte da se slika učita ili izaberite sliku koju želite da postavite")
@@ -233,7 +232,7 @@ Template.templateAddRecipes.events({
 			alert("Molim Vas da unesete  sve potrebne informacije")
 		}else{
 			
-			Meteor.call('addRecipes', name, time, category, difficulty, number, wayoflife, picture, ingredients, filterpreparation, filteradvice, (error, data)=>{
+			Meteor.call('addRecipes', name, time, category, difficulty, number, wayoflife, picture, ingredients, preparation, advice, (error, data)=>{
 				$(document).scrollTop(0)
 				if(!error){
 					Router.go(`/recept/${data}`)     
@@ -258,6 +257,7 @@ Template.templateshowAdvanced.events({
 	'click #add-comment-button':(event, templateInstance)=>{
 		event.preventDefault()
 		let comment = $('#add-comment-input').val()
+		let filtercomment=comment.replace( new RegExp( "\n", "g" ),"<br>");
 		let numberofcommentsvar= templateInstance.numberofcomments.get();
 		let allowcommentagain = ()=>{
 			templateInstance.numberofcomments.set("0")
@@ -268,7 +268,7 @@ Template.templateshowAdvanced.events({
 			alert("Polje u kome unosite komentar ne sme biti prazno !")
 		}else{
 			if(numberofcommentsvar<2){
-				Meteor.call('addComment', comment, templateInstance.data._id)
+				Meteor.call('addComment', filtercomment, templateInstance.data._id)
 				$('#add-comment-input').val("")
 				numberofcommentsvar++
 				templateInstance.numberofcomments.set(numberofcommentsvar)
@@ -320,9 +320,10 @@ Template.templateshowAdvanced.events({
 	},
 	'click .comment-update-commit':function(event, templateInstance){
 		event.preventDefault()
-		let removeid = templateInstance.updatecommentid.get()
+		let idofcomment = templateInstance.updatecommentid.get()
 		let newcommmetnvalue =$('.commentinput').val()
-		Meteor.call('updateComment', removeid, newcommmetnvalue)
+		
+		Meteor.call('updateComment', idofcomment, newcommmetnvalue)
 		$('#comment-update-modal').toggle()
 	},
 	'click .fa.fa-thumbs-up':(events, templateInstance) => {

@@ -6,131 +6,130 @@
       <div class="col-md-12">
           <form class="form-horizontal" method="post">
             <fieldset>
-              <legend class="text-center header add-recipe-title">Dodajte recept</legend>
+              <legend >Dodajte recept</legend>
+
               <div class="form-group">
-                <span class="col-md-2 col-md-offset-1 text-center">Naziv</span>
+                <div  class="col-md-2 col-md-offset-1 name-of-input">Naziv</div>
                 <div class="col-md-8">
-                  <input class="form-control" id="name" type="text" placeholder="Unesite ime recepta" required="true"/>
+                  <input class="form-control" id="name" type="text"/>
                 </div>
               </div>
+
               <div class="form-group">
-                <span class="col-md-2 col-md-offset-1 text-center">Kategorija</span>
+                <div  class="col-md-2 col-md-offset-1  name-of-input">Kategorija</div>
                 <div class="col-md-8">
                  <li class="dropdown">
-                   <a class="dropdown-toggle add-recipes-dropdown-desing"  data-toggle="dropdown" href="#"><label id="category">Izaberite  kategoriju</label><span class="caret"></span></a>
-                   <ul class="dropdown-menu" id="ul-category">
-                    {{#each search_allCategory}}
-                    <li name="{{name}}"><a href="#">{{name}}</a></li>
-                    {{/each}}
-                  </ul>
-                </li>
+                   <a class="dropdown-toggle add-recipes-dropdown-desing"  data-toggle="dropdown" href="#">
+                    <label id="category">Izaberite  kategoriju</label><span class="caret"></span></a>
+                      <ul class="dropdown-menu" id="ul-category">
+                        {{#each search_allCategory}}
+                          <li name="{{name}}"><a href="#">{{name}}</a></li>
+                        {{/each}}
+                     </ul>
+                  </li>
+                </div>
+              </div>
+
+              <div class="form-group">
+              <div class="col-md-2 col-md-offset-1  name-of-input">Težina pripreme</div>
+                <div class="col-md-8">
+                  <li class="dropdown">
+                    <a class="dropdown-toggle add-recipes-dropdown-desing"  data-toggle="dropdown" href="#">
+                      <label id="difficulty">Izaberite težinu</label><span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="ul-difficulty">
+                          <li name="Lako"><a href="#">Lako</a></li>
+                          <li name="Umereno"><a href="#">Umereno</a></li>
+                          <li name="Teško"><a href="#">Teško</a></li>
+                        </ul>
+                  </li>
+               </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-2 col-md-offset-1  name-of-input">Vreme pripreme</div>
+              <div class="col-md-8">
+                <input class="form-control" id="time" type="number"/>
               </div>
             </div>
+
             <div class="form-group">
-              <span class="col-md-2 col-md-offset-1 text-center">Težina pripreme</span>
+              <div class="col-md-2 col-md-offset-1  name-of-input">Broj porcija</div>
               <div class="col-md-8">
-                <li class="dropdown">
-                 <a class="dropdown-toggle add-recipes-dropdown-desing"  data-toggle="dropdown" href="#"><label id="difficulty">Izaberite težinu </label><span class="caret"></span></a>
-                 <ul class="dropdown-menu" id="ul-difficulty">
-                  <li name="Lako"><a href="#">Lako</a></li>
-                  <li name="Umereno"><a href="#">Umereno</a></li>
-                  <li name="Teško"><a href="#">Teško</a></li>
-                </ul>
-              </li>
+                <input class="form-control" id="number" type="text" />
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <span class="col-md-2 col-md-offset-1 text-center">Vreme pripreme</span>
-            <div class="col-md-8">
-              <input class="form-control" id="time" type="number" placeholder="Unesite sveukupno vreme pripreme u minutima" required="true"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <span class="col-md-2 col-md-offset-1 text-center">Broj porcija</span>
-            <div class="col-md-8">
-              <input class="form-control" id="number" type="text" placeholder="Unesite broj porcija" />
-            </div>
-          </div>
 
-          <div class="form-group">
-            <span class="col-md-2 col-md-offset-1 text-center">Posno</span>
-            <div class="col-md-8">
-              <input id="wayoflife" type="checkbox"/>
+            <div class="form-group">
+              <div class="col-md-2 col-xs-2 col-md-offset-1 ">Posno</div>
+              <div class="col-md-8 col-xs-8">
+                <input id="wayoflife" type="checkbox"/>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <span class="col-md-2 col-md-offset-1 text-center">Izaberite sliku</span>
-            <div class="col-md-8">
-              <form id="picture-form">
-                <label for="file-upload" class="custom-file-upload">
-                 Dodajte sliku
-               </label>
-               <input id="file-upload" style="display:none" type="file"/>
-             </form>
-           </div>
-         </div>
+          
+            <div class="form-group">
+              <div class="col-md-2  col-md-offset-1  name-of-input">Izaberite sliku</div>
+              <div class="col-md-8">
+                 <form id="picture-form">
+                   <label for="file-upload" class="custom-file-upload">Dodajte sliku</label>
+                   <input id="file-upload" style="display:none" type="file"/>
+                </form>
+             </div>
+            </div>
 
-         <legend class="text-center header">Dodajte sastojke</legend>
+            <legend >Dodajte sastojke</legend>
 
-         <div class="one-ingredient">
+            <div class="one-ingredient">
+              <div class="form-group">
+                <div class="col-md-2 col-md-offset-1  name-of-input">Količina</div>
+                  <div class="col-md-8">
+                    <input  class="form-control" name="kolicina" type="text"  />
+                  </div>
+              </div>
+
+             <div class="form-group">
+                <div class="col-md-2  col-md-offset-1  name-of-input">Sastojak</div>
+                <div class="col-md-8 ">
+                  <input  class="form-control" name="sastojak" type="text" />
+                </div>
+              </div>
+            </div>
+
+            <div class="add-new-ingredient"></div>
+            <div class="form-group">
+              <div class="col-md-2 col-md-offset-1 "></div>
+                <div class="col-md-8">
+                <button id="add-new-ingredient" style="float: right;">Dodaj nov sastojak</button>
+              </div>
+            </div> 
+
+            <legend>Priprema</legend>
+
+            <div class="form-group">
+               <div class="col-md-2 col-md-offset-1 name-of-input">Način pripreme</div>
+               <div class="col-md-8">
+                 <textarea class="form-control" id="preparation" name="message"  rows="7"></textarea>
+               </div>
+            </div>
 
            <div class="form-group">
-            <span class="col-md-2 col-md-offset-1 text-center">Količina</span>
-            <div class="col-md-8">
-              <input  class="form-control" name="kolicina" type="text" placeholder="Unesite količinu" required="true" />
-            </div>
+              <div class="col-md-2 col-md-offset-1  name-of-input">Savet</div>
+              <div class="col-md-8">
+                <textarea class="form-control" id="advice" name="message" rows="7"></textarea>
+              </div>
           </div>
 
           <div class="form-group">
-            <span class="col-md-2 col-md-offset-1 text-center">Sastojak</span>
-            <div class="col-md-8">
-              <input  class="form-control" name="sastojak" type="text" placeholder="Unesite naziv sastojka" />
-            </div>
-          </div>
-        </div>
-        <div class="add-new-ingredient"></div>
-        <div class="form-group">
-          <span class="col-md-2 col-md-offset-1 text-center"></span>
-          <div class="col-md-8">
-            <button id="add-new-ingredient" style="float: right;">Dodaj nov sastojak</button>
-          </div>
-        </div> 
-
-        <legend class="text-center header">Priprema</legend>
-
-        <div class="form-group">
-          <span class="col-md-2 col-md-offset-1 text-center">Način pripreme</span>
-          <div class="col-md-8">
-            <textarea class="form-control" id="preparation" name="message" placeholder="Unesite način pripreme" rows="7"></textarea>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <span class="col-md-2 col-md-offset-1 text-center">Savet</span>
-          <div class="col-md-8">
-            <textarea class="form-control" id="advice" name="message" placeholder="Unesite savet" rows="7"></textarea>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-md-12 text-center">
-            <button type="submit"  class="btn btn-success btn-lg" id="send-recipes">Pošalji recept</button>
+            <div class="col-md-12 text-center ">
+              <button type="submit"  class="btn btn-success btn-lg " id="send-recipes">Pošalji recept</button>
           </div>
         </div>   
-      </fieldset>
-     </form>
+       </fieldset>
+      </form>
+      </div>
     </div>
   </div>
-
-
-
-</div>
 {{/if}}
-
-<div>
-    <button class="up-button" ><i class="fa fa-angle-up" aria-hidden="true"></i></button>
-</div>
-
+<button class="up-button" ><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 </template>
 
 

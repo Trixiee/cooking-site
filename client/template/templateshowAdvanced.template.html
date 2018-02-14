@@ -1,49 +1,46 @@
 <template name="templateshowAdvanced">
   {{> templateHeader}}
-
   <div class="container ">
     <div class="row">
       <div class="col-md-12">
-      <div style="margin-top: 10px;">
-        
-            <div id="recipes-likes">
-              {{#if  recipes_likes_greater_than_zero}}
-                  Broj sviđanja  {{recipes_likes}} 
-              {{/if}}
-            </div>
-            
-            {{#if currentUser}}
-                <i style="color:blue;" class="fa fa-thumbs-up"></i>
+        <div style="margin-top: 10px;">
+          <div id="recipes-likes">
+            {{#if  recipes_likes_greater_than_zero}}
+              Broj sviđanja  {{recipes_likes}} 
             {{/if}}
-            
-            {{#if is_post_publisher}}
-                <i id="trash" title="Obrisite recept" class="fa fa-trash-o delete-post" aria-hidden="true"></i>
-                <!--<i id="pencil" title="Izmenite recept" class="fa fa-pencil-square-o update-post " aria-hidden="true"></i>-->
-            {{/if}}
-          </div><br>
+          </div>
         
-           <legend class="text-center header col-lg-12">
-              {{name}}
-           </legend>
+          {{#if currentUser}}
+            <i style="color:blue;" class="fa fa-thumbs-up"></i>
+          {{/if}}
+        
+          {{#if is_post_publisher}}
+            <i id="trash" title="Obrisite recept" class="fa fa-trash-o delete-post" aria-hidden="true"></i>
+            <!--<i id="pencil" title="Izmenite recept" class="fa fa-pencil-square-o update-post " aria-hidden="true"></i>-->
+          {{/if}}
+        </div><br>
+      
+        <legend>{{name}}</legend>
 
-          <div class="col-lg-6  col-xs-12">
-             <img id="recipes-picture" src="{{picture}}">
-          </div> 
+        <div class="col-lg-6  col-xs-12">
+          <img id="recipes-picture" src="{{picture}}">
+        </div> 
+
         <div class="col-lg-6 col-xs-12">
-          <legend class="text-center header basic-info">Osnovne informacije</legend>
+          <legend class="basic-info">Osnovne informacije</legend>
           <ul id="basic-information">
-            <li class="autor">Autor: {{user.profile.name}}</li>  
+            <li>Autor: {{user.profile.name}}</li>  
             <li>Kategorija: {{category}}</li>  
             <li>Težina pripreme: {{difficulty}}</li> 
             <li>Vreme pripreme: {{time}} minuta</li> 
             {{#if is_not_empty_number}} 
-               <li>Broj porcija: {{number}}</li>
+              <li>Broj porcija: {{number}}</li>
             {{/if}}
           </ul>
-        </div>
+       </div>
 
-        <div style="margin-top: 400px;">
-          <legend class="text-center header col-lg-12">Sastojci</legend>
+       <div style="margin-top: 400px;">
+          <legend>Sastojci</legend>
           <table class="table">
             <thead>
               <tr>
@@ -52,117 +49,117 @@
               </tr>
             </thead>
             {{#each ingredients}}
-            <tbody>
-              <tr>
-                <td>{{kolicina}}</td>
-                <td>{{sastojak}}</td>
-              </tr>
-            </tbody>
+              <tbody>
+                <tr>
+                  <td>{{kolicina}}</td>
+                  <td>{{sastojak}}</td>
+                </tr>
+              </tbody>
             {{/each}}
           </table>
-        </div> 
+      </div> 
 
-        <div>
-          <legend class="text-center header col-lg-12">Priprema</legend>
-          <div class="col-lg-12">Način pripreme</div>
-          <div style="margin-top: 5px" id="preparation" class="col-lg-12">
-            {{{preparation}}}
-          </div>
+      <div>
+        <legend>Priprema</legend>
+        <div class="col-lg-12">Način pripreme</div>
+         <div style="margin-top: 5px;" id="preparation" class="col-lg-12">
+          <pre style="background-color: white;">{{preparation}}</pre>
+        </div>
 
-          {{#if is_not_empty_advice}}
+        {{#if is_not_empty_advice}}
           <div style="padding-top:20px" class="col-lg-12">Savet</div>
-          <div  style="margin-top:5px" class="col-lg-12">
-            {{{advice}}}
+          <div style="margin-top:5px;" class="col-lg-12">
+            <pre style="background-color: white;">{{advice}}</pre>
+          </div>
+        {{/if}} 
+      </div> 
+
+      <div>
+        <legend>Komentari</legend>
+        {{#if currentUser}}
+          <div class="col-md-8 col-xs-12 col-md-offset-1 text-center">
+            <textarea class="form-control  " id="add-comment-input"  rows="1"></textarea>
           </div>
 
-          {{/if}} 
-
-        </div> 
-
-        <div>
-          <legend class="text-center header col-lg-12">Komentari</legend>
-          {{#if currentUser}}
-          <span class="col-md-8 col-xs-12 col-md-offset-1 text-center">
-            <input style="width: 100%; margin-bottom: 20px;" class="form-control" id="add-comment-input" type="text" placeholder="Unesite komentar" required="true"/>
-          </span>
-
-          <div class="col-md-2 col-xs-12">
-           <input  type="submit" id="add-comment-button" class="btn btn-success" value="Postavite komentar">
-         </div>
-         {{/if}}
-         {{#each comments}}
-         <span class="col-md-8 col-xs-8 col-md-offset-1 ">
-          <p>{{ comment_publisher.profile.name}}
-            {{#if is_comment_publisher}}
-            <div style="float: right;">
-              <i  id="trash"  title="Obrisite komentar" class="fa fa-trash-o delete-comment " aria-hidden="true"></i>
-              <i id="pencil" title="Izmenite komentar" class="fa fa-pencil-square-o update-comment  " aria-hidden="true"></i></div>
-              {{/if}}</p>
-            </span>
-            <span class="col-md-8 col-xs-12 col-md-offset-1 "> 
-              <p>{{comment}}</p>
-            </span>
-            
-            <div id="comment-delete-modal" class="modal">
-              <div class="modal-content" >
-                <div class="modal-header">
-                  <span  class="close delete-comment-modal" >&times;</span>
-                  <h1>Brisanje komentara</h1>
-                </div>
-                <div class="modal-body" >
-                  <p>Da li ste sigurni da želite da izbrišete komentar?</p>
-                </div>
-                <div class="modal-footer" style="text-align: center;" >
-                  <p>
-                    <button style="float: right;"  class="comment-delete-commit"  type="submit">Potvrdite brisanje komentara</button>
-                  </p> 
-                </div>
-              </div>
-            </div>
-
-            <div id="comment-update-modal" class="modal">
-              <div class="modal-content" >
-                <div class="modal-header">
-                  <span  class="close update-comment-modal" >&times;</span>
-                  <h1>Izmena komentara</h1>
-                </div>
-                <div class="modal-body" style="text-align: center;" >
-                  <form >
-                    <p>
-                      <input  class="form-control commentinput"  type="text" value="">
-                    </p>
-                  </form> 
-                </div>
-                <div class="modal-footer" style="text-align: center;" >
-                  <p>
-                    <button style="float: right;"  class="comment-update-commit"  type="submit">Potvrdite izmenu komentara</button>
-                  </p> 
-                </div>
-              </div>
-            </div>
-            {{/each}}
+          <div  class="col-md-2 col-xs-12">
+            <input style="margin-bottom:50px" type="submit" id="add-comment-button" class="btn btn-success" value="Postavite komentar">
           </div>
+        {{/if}}
+
+        {{#each comments}}
+          <div  class="col-md-8 col-xs-8 col-md-offset-1 ">
+            <p>
+              {{ comment_publisher.profile.name}}
+              {{#if is_comment_publisher}}
+                <div style="float: right;">
+                  <i  id="trash"  title="Obrisite komentar" class="fa fa-trash-o delete-comment " aria-hidden="true"></i>
+                  <i id="pencil" title="Izmenite komentar" class="fa fa-pencil-square-o update-comment" aria-hidden="true"></i></div>
+               {{/if}}
+            </p>
+        </div>
+
+        <div class="col-md-8 col-xs-12 col-md-offset-1 "> 
+          <pre style="background-color: white;">{{comment}}</pre>
+        </div>
+        
+        <div id="comment-delete-modal" class="modal">
+          <div class="modal-content" >
+            <div class="modal-header">
+              <span  class="close delete-comment-modal" >&times;</span>
+              <h1>Brisanje komentara</h1>
+            </div>
+            <div class="modal-body" >
+              <p>Da li ste sigurni da želite da izbrišete komentar?</p>
+            </div>
+            <div class="modal-footer" style="text-align: center;" >
+              <p>
+                <button style="float: right;"  class="comment-delete-commit"  type="submit">Potvrdite brisanje komentara</button>
+              </p> 
+            </div>
+          </div>
+        </div>
+
+        <div id="comment-update-modal" class="modal">
+          <div class="modal-content" >
+            <div class="modal-header">
+              <span  class="close update-comment-modal" >&times;</span>
+              <h1>Izmena komentara</h1>
+            </div>
+            <div class="modal-body" style="text-align: center;" >
+                <form >
+                 <p>
+                  <textarea class="form-control commentinput"  rows="1"></textarea>
+                 </p>
+                </form> 
+              </div>
+              <div class="modal-footer" style="text-align: center;" >
+               <p>
+                  <button style="float: right;"  class="comment-update-commit"  type="submit">Potvrdite izmenu komentara</button>
+                </p> 
+              </div>
+            </div>
+          </div>
+      {{/each}}
         </div>
       </div>
     </div>
-    <div id="post-delete-modal" class="modal">
-      <div class="modal-content" >
-        <div class="modal-header">
-          <span  class="close delete-post-modal" >&times;</span>
+  </div>
+
+  <div id="post-delete-modal" class="modal">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <span  class="close delete-post-modal" >&times;</span>
           <h1>Brisanje recepta </h1>
-        </div>
-        <div class="modal-body" >
-          <form >
-            <p>Da li ste sigurni da želite da obrišete recept ?</p>
-          </form> 
-        </div>
-        <div class="modal-footer" style="text-align: center;" >
-          <p><button style="float: right;"  class="post-delete-commit" type="submit">Potvrdite brisanje recepta</button></p> 
-        </div>
+      </div>
+      <div class="modal-body" >
+        <form >
+          <p>Da li ste sigurni da želite da obrišete recept ?</p>
+        </form> 
+      </div>
+      <div class="modal-footer" style="text-align: center;" >
+        <p><button style="float: right;"  class="post-delete-commit" type="submit">Potvrdite brisanje recepta</button></p> 
       </div>
     </div>
-    <div>
-      <button class="up-button"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
-    </div>
-
-  </template>
+  </div>
+  <button class="up-button"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+</template>
