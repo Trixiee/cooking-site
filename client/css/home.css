@@ -12,8 +12,6 @@ label {
   font-weight: normal !important;
 }
 
-
-
 legend{
   color: #6e1e0f !important; 
   font-weight: bold !important;
@@ -30,6 +28,12 @@ textarea{
   overflow: hidden;
   white-space: pre-wrap;
   resize: vertical;
+}
+
+pre{
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: white;
 }
 
 input::-webkit-outer-spin-button,
