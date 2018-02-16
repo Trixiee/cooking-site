@@ -163,6 +163,7 @@ Template.templateAddRecipes.events({
 		}
 
 		rd.onload = (e) => {  
+			$('#loader').attr('src','loading.gif');
 			Imgur.upload({
 				apiKey: '6affe5109b110b2',
 				image: btoa(uint8ToString(new Uint8Array(e.target.result)))
@@ -172,12 +173,14 @@ Template.templateAddRecipes.events({
 				} else {
 					data.link = data.link.replace('http://', 'https://')
 					templateInstance.recipes_picture.set(data.link);
-					console.log(data.link)
-
+					$('#loader').attr('src','signcheck.png');
+					
 				}
 			})
+			
 		}
 		rd.readAsArrayBuffer(file)
+
 
 	},
 
@@ -229,15 +232,17 @@ Template.templateAddRecipes.events({
 		if(picture==""){
 			alert("Molim Vas sačekajte da se slika učita ili izaberite sliku koju želite da postavite")
 		}else if(name=="" || time=="" || category=="" || difficulty==""   || preparation=="" || ingredients.length===0 ){
+
 			alert("Molim Vas da unesete  sve potrebne informacije")
 		}else{
-			
+				$('#theImg').hide();
 			Meteor.call('addRecipes', name, time, category, difficulty, number, wayoflife, picture, ingredients, preparation, advice, (error, data)=>{
 				$(document).scrollTop(0)
 				if(!error){
 					Router.go(`/recept/${data}`)     
 				}
 			})
+
 
 		}
 
@@ -257,7 +262,6 @@ Template.templateshowAdvanced.events({
 	'click #add-comment-button':(event, templateInstance)=>{
 		event.preventDefault()
 		let comment = $('#add-comment-input').val()
-		let filtercomment=comment.replace( new RegExp( "\n", "g" ),"<br>");
 		let numberofcommentsvar= templateInstance.numberofcomments.get();
 		let allowcommentagain = ()=>{
 			templateInstance.numberofcomments.set("0")
@@ -268,7 +272,7 @@ Template.templateshowAdvanced.events({
 			alert("Polje u kome unosite komentar ne sme biti prazno !")
 		}else{
 			if(numberofcommentsvar<2){
-				Meteor.call('addComment', filtercomment, templateInstance.data._id)
+				Meteor.call('addComment', comment, templateInstance.data._id)
 				$('#add-comment-input').val("")
 				numberofcommentsvar++
 				templateInstance.numberofcomments.set(numberofcommentsvar)
@@ -314,7 +318,7 @@ Template.templateshowAdvanced.events({
 	},
 	'click .comment-delete-commit':function(event, templateInstance){
 		event.preventDefault()
-		let commentdeleteid = templateInstance.deletecommentid.get();	
+		let commentdeleteid = templateInstance.deletecommentid.get()
 		Meteor.call('removeComment', commentdeleteid)
 		$('#comment-delete-modal').toggle()
 	},
@@ -322,22 +326,12 @@ Template.templateshowAdvanced.events({
 		event.preventDefault()
 		let idofcomment = templateInstance.updatecommentid.get()
 		let newcommmetnvalue =$('.commentinput').val()
-		
 		Meteor.call('updateComment', idofcomment, newcommmetnvalue)
 		$('#comment-update-modal').toggle()
 	},
 	'click .fa.fa-thumbs-up':(events, templateInstance) => {
 		let recipe = Recipes.findOne({_id:Template.instance().data._id})
-		console.log(recipe.likes)
 		let id = Template.instance().data._id
-
-		if((recipe.likes || []).indexOf(Meteor.userId()) !== -1){
-			Meteor.call('removeLike', id)
-		}else{
-			Meteor.call('addLike',id)
-		}
-		
+		Meteor.call('like',id)
 	},
-	
-
 })
