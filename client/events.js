@@ -186,7 +186,7 @@ Template.templateAddRecipes.events({
 
 	'click #add-new-ingredient ':(event)=>{
 		event.preventDefault()
-		$(".add-new-ingredient").append('<div class="one-ingredient"><div class="form-group"> <div class="col-md-2 col-md-offset-1 name-of-input">Količina</div><div class="col-md-8"><input name="kolicina" class="form-control"  type="text" placeholder="Unesite količinu" /> </div></div><div class="form-group"><div class="col-md-2 col-md-offset-1 name-of-input">Sastojak</div><div class="col-md-8"><input name="sastojak"  class="form-control"  type="text" placeholder="Unesite naziv sastojka" /></div></div></div>')
+		$(".add-new-ingredient").append('<div class="one-ingredient"><div class="form-group"> <div class="col-md-2 col-md-offset-1 name-of-input">Količina</div><div class="col-md-8"><input name="kolicina" class="form-control"  type="text" /> </div></div><div class="form-group"><div class="col-md-2 col-md-offset-1 name-of-input">Sastojak</div><div class="col-md-8"><input name="sastojak"  class="form-control"  type="text"/></div></div></div>')
 	},
 
 
