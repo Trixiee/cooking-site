@@ -86,7 +86,7 @@ input::-webkit-inner-spin-button {
 }
 .search{
   color: black !important;
-  width: -webkit-fill-available;
+  width: 100% !important;
   border:10px solid #2dc997;
   border-radius: 4px;
   margin-bottom: 30px;
@@ -105,6 +105,13 @@ input::-webkit-inner-spin-button {
 
 
 /*SHOWADVANCED*/
+
+.fb-share{
+  background: rgb(2, 90, 164);
+  color: white;
+  border: none;
+  float: right;
+}
 
 #recipes-picture{
   width: 100%;
@@ -165,7 +172,6 @@ input::-webkit-inner-spin-button {
   border: 1px solid #ccc;
   display: inline-block;
   width: 200px;
-  cursor: pointer;
 }
 
 #loader{
@@ -217,6 +223,7 @@ input::-webkit-inner-spin-button {
  background-color: #6e1e0f;
  color: white;
  cursor: pointer;
+
 }
 
 .fa-thumbs-up,.fa-trash-o,.fa-pencil-square-o{
