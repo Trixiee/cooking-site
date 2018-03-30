@@ -86,7 +86,7 @@ input::-webkit-inner-spin-button {
 }
 .search{
   color: black !important;
-  width: 100%;
+  width: 100% !important;
   border:10px solid #2dc997;
   border-radius: 4px;
   margin-bottom: 30px;
@@ -105,6 +105,13 @@ input::-webkit-inner-spin-button {
 
 
 /*SHOWADVANCED*/
+
+.fb-share{
+  background: rgb(2, 90, 164);
+  color: white;
+  border: none;
+  float: right;
+}
 
 #recipes-picture{
   width: 100%;

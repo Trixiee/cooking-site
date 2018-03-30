@@ -3,6 +3,7 @@
   <div class="container ">
     <div class="row">
       <div class="col-md-12">
+
         <div style="margin-top: 10px;">
           <div id="recipes-likes">
             {{#if  recipes_likes_greater_than_zero}}
@@ -17,9 +18,14 @@
           {{#if is_post_publisher}}
             <i id="trash" title="Obrisite recept" class="fa fa-trash-o delete-post" aria-hidden="true"></i>
             <!--<i id="pencil" title="Izmenite recept" class="fa fa-pencil-square-o update-post " aria-hidden="true"></i>-->
+            
           {{/if}}
-        </div><br>
+          <button class="fb-share" >Share on facebook</button>
       
+
+        </div>
+      
+
         <legend>{{name}}</legend>
 
         <div class="col-lg-6  col-xs-12">
