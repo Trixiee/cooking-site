@@ -1,18 +1,21 @@
 <template name="templateRegister">
 {{> templateHeader}}
   <div class="container">
-    <div class="row" style="text-align: center;">
-      <div style="text-algin:center;background:whitesmoke ;" class="col-lg-6 col-lg-offset-3 col-xs-12">
-        <h1 style="padding-top: 20px;">Registrujte se</h1>  
-        <div class="form">
+    <div class="row" >
+      <div class="col-lg-6 col-lg-offset-3 col-xs-12" style="text-algin:center;background:whitesmoke ;">
+        <h1 style="padding-top: 20px; text-align: center;">Registrujte se</h1>  
           <form class="register-form">
-              <input class="form-control" id="register-username" type="text" placeholder="korisničko ime"/><br>
-              <input class="form-control" id="register-password" type="password" placeholder="šifra"/><br>
-              <input class="form-control" id="register-email" type="text" placeholder="email adresa"/><br>
-              <button type="submit"  class="btn btn-success btn-lg" >Registruj se</button>
-              <p style="padding-top: 20px;">Već imate nalog? <a href="/prijava">Prijavite se</a></p>
-            </form>
-        </div>  
+            <div aria-label="Register form" role="group">
+              <label for="register-username">Korisničko ime</label>
+              <input class="form-control" id="register-username" type="text" placeholder="unesite korisničko ime"/><br>
+              <label for="register-password">Šifra</label>
+              <input class="form-control" id="register-password" type="password" placeholder="unesite šifru"/><br>
+              <label for="register-email">E-mail</label>
+              <input class="form-control" id="register-email" type="text" placeholder="unesite e-mail adresu"/><br>
+              <button type="submit" class="btn btn-success btn-lg center-block">Registruj se</button>
+            </div>
+          </form>
+          <p style="padding-top: 20px; text-align: center;">Već imate nalog? <a href="/prijava">Prijavite se</a></p> 
       </div>   
     </div>    
   </div>          

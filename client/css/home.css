@@ -8,13 +8,20 @@ body{
   background-size: cover;
 }
 
-label {
-  font-weight: normal !important;
+.btn-lg, .btn-group-lg > .btn{
+  padding: 6px;
 }
+
+.titles{
+  text-align: center;
+  color: #6e1e0f;
+  border-bottom: 1px solid #dedede;
+}
+
 
 legend{
   color: #6e1e0f !important; 
-  font-weight: bold !important;
+  font-size: 24px;
   padding-top: 20px;
   text-align: center;
 }
@@ -63,6 +70,10 @@ input::-webkit-inner-spin-button {
 }
 .navbar-inverse{
   background-color: #6e1e0f !important;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 100;
 }
 .navbar-right{
   color: #ffd350;
