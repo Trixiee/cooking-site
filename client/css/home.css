@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+
 body{
  background-color:#eeba7d; 
  -webkit-background-size: 100%;
@@ -8,6 +9,9 @@ body{
   background-size: cover;
 }
 
+label{
+   font-weight: normal;
+}
 .btn-lg, .btn-group-lg > .btn{
   padding: 6px;
 }
@@ -26,7 +30,9 @@ legend{
   text-align: center;
 }
 
-
+label{
+  font-weight: none;
+}
 li{
   list-style-type: none;
 }
@@ -277,6 +283,10 @@ input::-webkit-inner-spin-button {
   .custom-file-upload {
     width: 100%;
   }
+  
+  .leftpicture{
+    display: none;
+  }
 }
 
 
@@ -284,3 +294,12 @@ input::-webkit-inner-spin-button {
 
 
 
+/*LOGIN*/
+#login{
+  font-size: 26px;
+}
+
+/*REGISTER*/
+#register{
+  font-size: 26px;
+}

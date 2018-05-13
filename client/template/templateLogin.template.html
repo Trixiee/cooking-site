@@ -2,19 +2,22 @@
   {{> templateHeader}}
   <div class="container">
     <div class="row" >
-      <div class="col-lg-6 col-lg-offset-3 col-xs-12" style="text-algin:center;background:whitesmoke;">
-        <h1 style="padding-top: 20px;text-align: center; ">Prijavite se</h1>  
-        <form class="login-form">
+      <div class="col-lg-12" style="padding:0px;text-algin:center;background:whitesmoke;">
+        <div class=" col-lg-6  " style="padding:0px;"><img src="cool.jpg" class="leftpicture" style="width: 100%"></div>
+        <div class="col-lg-6 col-md-12 col-xs-12" >
+         <h1 id="login" style="text-align: center; ">Prijavite se</h1>  
+         <form class="login-form">
             <div aria-label="Login form" role="group">
-            <label for="login-email">Email</label>
-            <input class="form-control" id="login-email" type="text" placeholder="Unesite Vaš email"/><br>
-            <label for="login-password">Password</label>
-            <input id="login-password"  class="form-control"  type="password" placeholder="šifra"/><br>
-            <button type="submit"  class="btn btn-success btn-lg center-block"  >Prijavi se</button>
-          </div>
+              <label for="login-email">Email</label>
+              <input class="form-control" id="login-email" type="text" placeholder="Unesite Vaš email"/><br>
+              <label for="login-password">Password</label>
+              <input id="login-password"  class="form-control"  type="password" placeholder="šifra"/><br>
+              <button type="submit"  class="btn btn-success btn-lg center-block"  >Prijavi se</button>
+           </div>
         </form>
-        <p style="padding-top: 20px; text-align: center;" >Nisi registrovan? <a href="/registracija">Registruj se</a></p> 
-      </div>   
+        <p style=" text-align: center;position: relative;top:10px" >Nisi registrovan? <a href="/registracija">Registruj se</a></p> 
+      </div> 
+      </div>  
     </div>    
   </div>          
 </template>
